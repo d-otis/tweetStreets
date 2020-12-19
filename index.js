@@ -64,7 +64,15 @@ const getPage = async (params, options, nextToken) => {
     }
 }
 
-getUserTweets();
+const parseTweets = tweetArray => {
+    let parsedTweets = []
+    tweetArray.filter(tweet => {
+        if(tweet.text.includes('resume') || tweet.text.includes('suspended')) {
+            parsedTweets.push(tweet)
+        }
+    })
+    return parsedTweets
+}
 
 // create date obj/determine the date
 // iterate through getUserTweets[] and check if created_at === todaysDate
