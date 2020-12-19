@@ -25,4 +25,17 @@ const sendMail = tweets => {
     subject: `PhilaStreets Tweets`,
     text: formattedTweets(tweets)
   }
-})
+
+  mail.sendMail(mailOptions, (err, info) => {
+    console.log(err ? err : `Email sent: ${info.response}`)
+  })
+}
+
+const formatDate = rawDate => {
+  const dateObj = new Date(rawDate)
+  const splitDate = dateObj.toString().split(' ')
+  const formattedDate = splitDate.slice(0,3).concat(splitDate.slice(4,5)).join(' ')
+  return formattedDate
+}
+
+module.exports = sendMail
