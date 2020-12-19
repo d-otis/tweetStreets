@@ -1,6 +1,4 @@
-// const nodemailer = require('nodemailer')
 const needle = require('needle');
-// const dotenv = require('dotenv').config();
 const dotenvMe = require('./env.util')
 
 const userId = 117424097;
