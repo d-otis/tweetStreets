@@ -14,11 +14,7 @@ const sendMail = tweets => {
   const formattedTweets = tweetArr => {
     let body = ''
     for (const tweet of tweetArr) {
-      console.log(`Checking tweet# ${tweet.id}`)
-      if (!mailedTweets.includes(tweet.id)) {
-        body = body.concat(tweet.created_at + "\r\n" + tweet.text + "\r\n\r\n")
-        mailedTweets.push(tweet.id)
-      }
+      body = body.concat(formatDate(tweet.created_at) + "\r\n" + tweet.text + "\r\n\r\n")
     }
     return body
   }
