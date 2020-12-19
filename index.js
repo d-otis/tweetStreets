@@ -83,8 +83,7 @@ const parseTweets = tweetArray => {
     return parsedTweets
 }
 
-// create date obj/determine the date
-// iterate through getUserTweets[] and check if created_at === todaysDate
-// if the dates match and they include 'collections' || 'suspended' || 'resume'
-// then add to new[]
-// finally email flagged tweets
+
+console.log('script starting')
+// getUserTweets()
+setInterval(getUserTweets, 60000)
