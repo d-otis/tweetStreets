@@ -1,4 +1,5 @@
 const needle = require('needle');
+const sendMail = require('./mailer')
 const dotenvMe = require('./env.util')
 
 const userId = 117424097;
