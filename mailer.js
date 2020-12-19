@@ -10,23 +10,6 @@ const mail = nodemailer.createTransport({
   }
 })
 
-// const mailOptions = {
-//   from: process.env.GMAIL_USR_FROM,
-//   to: process.env.GMAIL_USR_TO,
-//   subject: `Test Subject @ ${Date.now()}`,
-//   text: 'i"m oing a crossword puzzle'
-// }
-
-// mail.sendMail(mailOptions, (err, info) => {
-//   if (err) {
-//     console.log(err)
-//   } else {
-//     console.log('Email sent: ' + info.response)
-//   }
-// })
-
-let mailedTweets = []
-
 const sendMail = tweets => {
   const formattedTweets = tweetArr => {
     let body = ''
