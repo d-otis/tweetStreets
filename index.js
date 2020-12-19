@@ -40,9 +40,10 @@ const getUserTweets = async () => {
         }
     }
 
-    console.log(userTweets);
-    console.log(`Got ${userTweets.length} Tweets from ${username}!`);
-
+    // console.log('userTweets are: ', userTweets);
+    // console.log(`Got ${userTweets.length} Tweets from ${username}!`);
+    let matchingTweets = parseTweets(userTweets)
+    matchingTweets.length > 0 ? sendMail(matchingTweets) : null
 }
 
 const getPage = async (params, options, nextToken) => {
