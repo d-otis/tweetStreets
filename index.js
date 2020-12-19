@@ -63,3 +63,9 @@ const getPage = async (params, options, nextToken) => {
 }
 
 getUserTweets();
+
+// create date obj/determine the date
+// iterate through getUserTweets[] and check if created_at === todaysDate
+// if the dates match and they include 'collections' || 'suspended' || 'resume'
+// then add to new[]
+// finally email flagged tweets
