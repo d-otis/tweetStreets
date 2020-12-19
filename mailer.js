@@ -19,10 +19,10 @@ const sendMail = tweets => {
     return body
   }
 
-mail.sendMail(mailOptions, (err, info) => {
-  if (err) {
-    console.log(err)
-  } else {
-    console.log('Email sent: ' + info.response)
+  const mailOptions = {
+    from: process.env.GMAIL_USR_FROM,
+    to: process.env.GMAIL_USR_TO,
+    subject: `PhilaStreets Tweets`,
+    text: formattedTweets(tweets)
   }
 })
