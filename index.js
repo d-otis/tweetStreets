@@ -43,7 +43,16 @@ const getUserTweets = async () => {
     }
 
     let matchingTweets = parseTweets(userTweets)
-    matchingTweets.length > 0 ? sendMail(matchingTweets) : null
+    let tweetQueue = []
+    if (matchingTweets.length > 0) {
+        matchingTweets.forEach(tweet => {
+            if(!MAILED_TWEETS.includes(tweet.id)) {
+                tweetQueue.push(tweet)
+                MAILED_TWEETS.push(tweet.id)
+            }
+        })
+        tweetQueue.length > 0 ? sendMail(tweetQueue) : console.log('no new relevant tweets')
+    }
 }
 
 const getPage = async (params, options, nextToken) => {
