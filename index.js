@@ -10,4 +10,5 @@ setInterval(() => {
   console.log(`Checked @ ${date.toString()}`)
   console.log()
   getUserTweets()
-}, 30000)
+}, 14400000)
+// aka 4 hours
