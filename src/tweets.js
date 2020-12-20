@@ -51,7 +51,13 @@ const getUserTweets = async () => {
               MAILED_TWEETS.push(tweet.id)
           }
       })
-      tweetQueue.length > 0 ? sendMail(tweetQueue) : console.log('no new relevant tweets')
+
+      if (tweetQueue.length > 0 ) {
+        sendMail(tweetQueue)
+        // sendSMS(tweetQueue)
+      } else {
+        console.log('no new relevant tweets')
+      }
   }
 }
 
