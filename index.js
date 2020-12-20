@@ -1,7 +1,7 @@
 const needle = require('needle');
-const sendMail = require('./mailer')
+const sendMail = require('./src/mailer')
 const dotenv = require('dotenv').config();
-let MAILED_TWEETS = []
+const MAILED_TWEETS = require('./src/mailedTweets')
 
 const userId = 117424097;
 const url = `https://api.twitter.com/2/users/${userId}/tweets`;
