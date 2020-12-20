@@ -1,6 +1,6 @@
 const needle = require('needle');
 const sendMail = require('./mailer')
-const dotenvMe = require('./env.util')
+const dotenv = require('dotenv').config();
 let MAILED_TWEETS = []
 
 const userId = 117424097;
@@ -85,5 +85,5 @@ const parseTweets = tweetArray => {
 
 
 console.log('script starting')
-// getUserTweets()
-setInterval(getUserTweets, 60000)
+getUserTweets()
+// setInterval(getUserTweets, 60000)
