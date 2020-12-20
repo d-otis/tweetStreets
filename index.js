@@ -2,7 +2,8 @@ const { getUserTweets } = require('./src/tweets')
 
 console.log('script starting')
 console.log()
-// getUserTweets()
+// initial fetch
+getUserTweets()
 // setInterval(getUserTweets, 14400000)
 setInterval(() => {
   let rawDate = Date.now()
