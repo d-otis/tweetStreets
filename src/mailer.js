@@ -32,8 +32,7 @@ const sendMail = tweets => {
 
 const formatDate = rawDate => {
   const dateObj = new Date(rawDate)
-  const splitDate = dateObj.toString().split(' ')
-  const formattedDate = splitDate.slice(0,3).concat(splitDate.slice(4,5)).join(' ')
+  const formattedDate = dateObj.toDateString()
   return formattedDate
 }
 
