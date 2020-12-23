@@ -12,9 +12,11 @@ const getUserTweets = async () => {
   let userTweets = [];
   let username
   let params = {
-      "max_results": 10,
-      "tweet.fields": "created_at",
-      "expansions": "author_id"
+    "max_results": 100,
+    "tweet.fields": "created_at",
+    "expansions": "author_id",
+    "start_time": "2020-01-01T04:00:00Z",
+    "end_time": new Date().toISOString().split('.')[0] + "Z"
   }
 
   const options = {
