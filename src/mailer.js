@@ -26,6 +26,7 @@ const sendMail = tweets => {
   }
 
   mail.sendMail(mailOptions, (err, info) => {
+    console.log(`Sending email with ${tweets.length} tweets.`)
     console.log(err ? err : `Email sent: ${info.response}`)
   })
 }
