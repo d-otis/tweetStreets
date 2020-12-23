@@ -74,11 +74,13 @@ const getPage = async (params, options, nextToken) => {
   try {
     const resp = await needle('get', url, params, options);
 
-      if (resp.statusCode != 200) {
-          console.log(`${resp.statusCode} ${resp.statusMessage}:\n${resp.body}`);
-          return;
-      }
-      return resp.body;
+    if (resp.statusCode != 200) {
+
+      console.log(`${resp.statusCode} ${resp.statusMessage}:`);
+      resp.body.errors.forEach(error => console.log(`${error.message} \n`))
+      return;
+    }
+    return resp.body;
   } catch (err) {
     throw new Error(`Request failed: ${err}`);
   }
