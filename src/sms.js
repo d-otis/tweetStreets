@@ -6,9 +6,11 @@ const client = new twilio(accountSid, authToken)
 const sender = process.env.TWILIO_NUMBER
 const destination = process.env.MY_CELL
 
-const sendSMS = msg => {
+const sendSMS = tweets => {
+
+
   client.messages.create({
-    body: 'Hi, Mom! I\'m texting you from the computer!',
+    body: formattedTweets(tweets),
     from: sender,
     to: destination
    })
@@ -16,3 +18,5 @@ const sendSMS = msg => {
 }
 
 
+
+module.exports = sendSMS
