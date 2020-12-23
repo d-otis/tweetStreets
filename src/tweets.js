@@ -63,6 +63,7 @@ const getUserTweets = async () => {
     }
   }
 }
+
 let count = 1
 const getPage = async (params, options, nextToken) => {
   if (nextToken) {
