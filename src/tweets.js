@@ -2,6 +2,7 @@ const needle = require('needle');
 const sendMail = require('./mailer')
 const dotenv = require('dotenv').config();
 const MAILED_TWEETS = require('./mailedTweets')
+const sendSMS = require('./sms')
 
 const userId = 117424097;
 const url = `https://api.twitter.com/2/users/${userId}/tweets`;
