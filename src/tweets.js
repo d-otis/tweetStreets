@@ -40,6 +40,10 @@ const getUserTweets = async () => {
       } else {
         hasNextPage = false
       }
+      // nextToken = resp.meta.next_token ? resp.meta.next_token : null
+    } else {
+      hasNextPage = false;
+    }
   }
 
   let matchingTweets = parseTweets(userTweets)
