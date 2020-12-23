@@ -66,7 +66,9 @@ const getUserTweets = async () => {
 
 const getPage = async (params, options, nextToken) => {
   if (nextToken) {
-      params.next_token = nextToken;
+    params.pagination_token = nextToken;
+    console.log(`#${count}: nextToken is ${nextToken}`)
+    count++
   }
 
   try {
