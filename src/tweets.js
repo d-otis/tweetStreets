@@ -64,7 +64,7 @@ const getUserTweets = async () => {
   let tweetQueue = []
   if (matchingTweets.length > 0) {
     matchingTweets.forEach(tweet => {
-      if (tweetDate(tweet) === today || tweetDate(tweet) === today - 1) {
+      if (tweetDateTime(tweet).day === today.day && tweetDateTime(tweet).hour === today.hour) {
         tweetQueue.push(tweet)
       }
     })
