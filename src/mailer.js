@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer')
 const dotenv = require('dotenv').config();
+const { formattedTweets } = require('./util')
 
 const mail = nodemailer.createTransport({
   service: 'gmail',
