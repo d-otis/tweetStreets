@@ -88,11 +88,11 @@ const getPage = async (params, options, nextToken) => {
       resp.body.errors.forEach(error => console.log(`${error.message} \n`))
       return;
     }
+    console.log()
     return resp.body;
   } catch (err) {
     throw new Error(`Request failed: ${err}`);
   }
-  console.log()
 }
 
 const parseTweets = tweetArray => {
