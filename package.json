@@ -4,7 +4,7 @@
   "description": "App to send notifications when Philly Streets Collection is delayed or resumed.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "dan foley",
   "license": "ISC",
