@@ -59,7 +59,7 @@ const getUserTweets = async () => {
   let tweetQueue = []
   if (matchingTweets.length > 0) {
     matchingTweets.forEach(tweet => {
-      if (!MAILED_TWEETS.includes(tweet.id)) {
+      if (tweetDate(tweet) === today || tweetDate(tweet) === today - 1) {
         tweetQueue.push(tweet)
       }
     })
