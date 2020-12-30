@@ -55,7 +55,10 @@ const getUserTweets = async () => {
     }
   }
 
-  const today = dayjs().dayOfYear()
+  const today = {
+    day: dayjs().dayOfYear(),
+    hour: dayjs().hour()
+  }
 
   let matchingTweets = parseTweets(userTweets)
   let tweetQueue = []
