@@ -1,5 +1,5 @@
 const { getUserTweets } = require('./src/tweets')
-
+console.log('==================================')
 console.log('script starting')
 console.log()
 // initial fetch
@@ -11,3 +11,5 @@ let date = new Date(rawDate)
 console.log(`Checked @ ${date.toString()}`)
 console.log()
 console.log('done')
+console.log()
+console.log('==================================')
