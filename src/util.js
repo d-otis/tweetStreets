@@ -12,4 +12,4 @@ const formatDate = rawDate => {
   return formattedDate
 }
 
-module.exports = { formattedTweets }
+module.exports = { formattedTweets, formatDate }
