@@ -1,4 +1,5 @@
 var assert = require('assert')
+var { formatDate, formattedTweets } = require('../src/util')
 
 describe('Array', function() {
   describe("#indexOf()", function () {
