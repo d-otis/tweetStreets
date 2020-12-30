@@ -92,6 +92,7 @@ const getPage = async (params, options, nextToken) => {
   } catch (err) {
     throw new Error(`Request failed: ${err}`);
   }
+  console.log()
 }
 
 const parseTweets = tweetArray => {
