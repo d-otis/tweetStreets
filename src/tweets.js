@@ -67,7 +67,9 @@ const getUserTweets = async () => {
     if (tweetQueue.length > 0) {
       sendMail(tweetQueue)
     } else {
+      console.log()
       console.log('no new relevant tweets')
+      console.log()
     }
   }
 }
@@ -88,7 +90,6 @@ const getPage = async (params, options, nextToken) => {
       resp.body.errors.forEach(error => console.log(`${error.message} \n`))
       return;
     }
-    console.log()
     return resp.body;
   } catch (err) {
     throw new Error(`Request failed: ${err}`);
