@@ -54,7 +54,6 @@ const getUserTweets = async () => {
     matchingTweets.forEach(tweet => {
       if (!MAILED_TWEETS.includes(tweet.id)) {
         tweetQueue.push(tweet)
-        MAILED_TWEETS.push(tweet.id)
       }
     })
 
