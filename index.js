@@ -1,15 +1,13 @@
 const { getUserTweets } = require('./src/tweets')
+const { getStore, anArray } = require('./src/getStore')
+// let savedTweetIds = getStore()
 
 console.log('script starting')
 console.log()
 // initial fetch
 getUserTweets()
-// setInterval(getUserTweets, 14400000)
-setInterval(() => {
-  let rawDate = Date.now()
-  let date = new Date(rawDate)
-  console.log(`Checked @ ${date.toString()}`)
-  console.log()
-  getUserTweets()
-}, 3600000)
-// aka 4 hours
+let rawDate = Date.now()
+let date = new Date(rawDate)
+console.log(`Checked @ ${date.toString()}`)
+console.log()
+console.log('done')
