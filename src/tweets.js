@@ -1,6 +1,9 @@
 const needle = require('needle');
 const sendMail = require('./mailer')
 const dotenv = require('dotenv').config();
+const dayjs = require('dayjs')
+const dayOfYear = require('dayjs/plugin/dayOfYear')
+dayjs.extend(dayOfYear)
 
 const userId = 117424097;
 const url = `https://api.twitter.com/2/users/${userId}/tweets`;
