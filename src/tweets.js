@@ -48,7 +48,12 @@ const getUserTweets = async () => {
     }
   }
 
-  const tweetDate = tweet => dayjs(tweet.created_at).dayOfYear()
+  const tweetDateTime = tweet => {
+    return {
+      day: dayjs(tweet.created_at).dayOfYear(),
+      hour: dayjs(tweet.created_at).hour()
+    }
+  }
 
   const today = dayjs().dayOfYear()
 
