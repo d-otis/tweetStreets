@@ -104,7 +104,7 @@ const getPage = async (params, options, nextToken) => {
 const parseTweets = tweetArray => {
   let parsedTweets = []
   tweetArray.filter(tweet => {
-    if (tweet.text.includes('resume') || tweet.text.includes('suspended') || tweet.text.includes('delay')) {
+    if (tweet.text.includes('resume') || tweet.text.includes('suspended') || tweet.text.includes('delay') || tweet.text.includes('collection')) {
       parsedTweets.push(tweet)
     }
   })
