@@ -3,14 +3,14 @@ var { formatDate, formattedTweets } = require('../src/util')
 
 describe('Array', function() {
   describe("#indexOf()", function () {
-    it('should return -1 when the valie is not present', function() {
+    it('should return -1 when the value is not present', function() {
       assert.strictEqual([1, 2, 3].indexOf(4), -1)
     })
   })
 })
 
 describe('formatDate()', function() {
-  it('should return the properly formated date', function() {
+  it('should return the properly formatted date', function() {
     const rawDate = "2020-12-18T13:35:03.000Z"
     assert.strictEqual(formatDate(rawDate), 'Fri Dec 18 2020')
   })
