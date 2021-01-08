@@ -1,6 +1,9 @@
 const needle = require('needle');
 const sendMail = require('./mailer')
 const dotenv = require('dotenv').config();
+const dayjs = require('dayjs')
+const dayOfYear = require('dayjs/plugin/dayOfYear')
+dayjs.extend(dayOfYear)
 
 const userId = 117424097;
 const url = `https://api.twitter.com/2/users/${userId}/tweets`;
@@ -45,20 +48,33 @@ const getUserTweets = async () => {
     }
   }
 
+  const tweetDateTime = tweet => {
+    return {
+      day: dayjs(tweet.created_at).dayOfYear(),
+      hour: dayjs(tweet.created_at).hour()
+    }
+  }
+
+  const today = {
+    day: dayjs().dayOfYear(),
+    hour: dayjs().hour()
+  }
+
   let matchingTweets = parseTweets(userTweets)
   let tweetQueue = []
   if (matchingTweets.length > 0) {
     matchingTweets.forEach(tweet => {
-      if (!MAILED_TWEETS.includes(tweet.id)) {
+      if (tweetDateTime(tweet).day === today.day && tweetDateTime(tweet).hour === today.hour) {
         tweetQueue.push(tweet)
-        MAILED_TWEETS.push(tweet.id)
       }
     })
 
     if (tweetQueue.length > 0) {
       sendMail(tweetQueue)
     } else {
+      console.log()
       console.log('no new relevant tweets')
+      console.log()
     }
   }
 }
@@ -89,7 +105,7 @@ const getPage = async (params, options, nextToken) => {
 const parseTweets = tweetArray => {
   let parsedTweets = []
   tweetArray.filter(tweet => {
-    if (tweet.text.includes('resume') || tweet.text.includes('suspended')) {
+    if (tweet.text.includes('resume') || tweet.text.includes('suspended') || tweet.text.includes('delay') || tweet.text.includes('collection')) {
       parsedTweets.push(tweet)
     }
   })
