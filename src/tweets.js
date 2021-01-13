@@ -12,7 +12,8 @@ const userId = 117424097;
 const url = `https://api.twitter.com/2/users/${userId}/tweets`;
 const bearerToken = process.env.BEARER_TOKEN;
 
-const getUserTweets = async () => {
+const getUserTweets = async (savedIds) => {
+
   console.log('getUserTweets() started')
   let userTweets = [];
   let username
