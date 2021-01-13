@@ -1,6 +1,5 @@
 const { getUserTweets } = require('./src/tweets')
-const { getStore, anArray } = require('./src/getStore')
-// let savedTweetIds = getStore()
+const savedIds = require('./src/savedIds')
 
 console.log('script starting')
 console.log()
