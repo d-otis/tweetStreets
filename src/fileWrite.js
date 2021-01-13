@@ -1,6 +1,7 @@
 const fs = require('fs')
 
-const persistTweetIds = ids => {
+const persistTweetIds = tweets => {
+  const ids = tweets.map(tweet => tweet.id)
   ids.forEach(num => {
     fs.writeFile('/db/data.txt', num + ",", (err) => {
       if (err) throw err;
