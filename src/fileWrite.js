@@ -10,4 +10,4 @@ const persistTweetIds = tweets => {
   })
 }
 
-module.persistTweetIds = persistTweetIds
+module.exports = persistTweetIds
