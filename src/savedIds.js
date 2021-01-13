@@ -12,4 +12,4 @@ const data = fs.readFileSync(`${process.cwd()}/db/ids.txt`, 'utf-8', (err, data)
 
 const savedIds = processData(data)
 
-module.savedIds = savedIds
+module.exports = savedIds
