@@ -10,7 +10,7 @@ I wanted to create a NodeJS app that emails, or texts, me anytime a tweet from P
 
 ## Todo
 
-- automatically generate ```db/ids.txt``` when it doesn't already exist.
+- automatically generate a blank ```db/ids.txt``` when it doesn't already exist.
 - clean up TwilioSMS branch + merge with main
 
 
