@@ -14,7 +14,6 @@ const bearerToken = process.env.BEARER_TOKEN;
 
 const getUserTweets = async (savedIds) => {
 
-  console.log('getUserTweets() started')
   let userTweets = [];
   let username
   let params = {
@@ -33,7 +32,11 @@ const getUserTweets = async (savedIds) => {
 
   let hasNextPage = true;
   let nextToken = null;
+
+  console.log()
   console.log("Retrieving Tweets...");
+  console.log()
+
   while (hasNextPage) {
     let resp = await getPage(params, options, nextToken);
     if (resp && resp.meta && resp.meta.result_count && resp.meta.result_count > 0) {
