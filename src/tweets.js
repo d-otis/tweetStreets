@@ -49,7 +49,6 @@ const getUserTweets = async (savedIds) => {
       } else {
         hasNextPage = false
       }
-      // nextToken = resp.meta.next_token ? resp.meta.next_token : null
     } else {
       hasNextPage = false;
     }
