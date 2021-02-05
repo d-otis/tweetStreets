@@ -1,6 +1,7 @@
 const needle = require('needle');
 const sendMail = require('./mailer')
-const dotenv = require('dotenv').config();
+const dotenv = require('dotenv')
+dotenv.config({ path: __dirname + '/../.env' })
 
 const dayjs = require('dayjs')
 const dayOfYear = require('dayjs/plugin/dayOfYear')
