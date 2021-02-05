@@ -12,3 +12,4 @@ I wanted to create a NodeJS app that emails, or texts, me anytime a tweet from P
 
 - automatically generate a blank ```db/ids.txt``` when it doesn't already exist.
 - clean up TwilioSMS branch + merge with main
+- fiddle with dynamic date so it doesn't go back so far in time (make sure format produced by dayjs doesn't conflict with expected format in Twitter API)
