@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer')
-const dotenv = require('dotenv').config();
+const dotenv = require('dotenv')
 dotenv.config({ path: __dirname + '/../.env' })
 const { formattedTweets } = require('./util')
 
