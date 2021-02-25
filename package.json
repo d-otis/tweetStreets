@@ -9,7 +9,7 @@
   "author": "dan foley",
   "license": "ISC",
   "dependencies": {
-    "dayjs": "^1.9.8",
+    "dayjs": "^1.10.4",
     "dotenv": "^8.2.0",
     "mocha": "^8.2.1",
     "needle": "^2.5.2",
