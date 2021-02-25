@@ -18,8 +18,12 @@ const getUserTweets = async (savedIds) => {
   const time = () => {
     let today = dayjs()
     let sevenDaysAgo = today.subtract(7, 'day')
+    const formatTime = raw => raw.toISOString().split(".")[0] + "Z"
 
-    return sevenDaysAgo.toISOString().split(".")[0] + "Z"
+    return {
+      today: formatTime(today),
+      lastWeek: formatTime(sevenDaysAgo)
+    }
   }
 
   let userTweets = [];
