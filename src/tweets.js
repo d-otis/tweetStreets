@@ -28,7 +28,7 @@ const getUserTweets = async (savedIds) => {
     "max_results": 100,
     "tweet.fields": "created_at",
     "expansions": "author_id",
-    "start_time": "2021-01-01T04:00:00Z",
+    "start_time": startTime(),
     "end_time": new Date().toISOString().split('.')[0] + "Z"
   }
 
