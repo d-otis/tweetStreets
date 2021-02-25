@@ -15,6 +15,13 @@ const bearerToken = process.env.BEARER_TOKEN;
 
 const getUserTweets = async (savedIds) => {
 
+  const startTime = () => {
+    let today = dayjs()
+    let sevenDaysAgo = today.subtract(7, 'day')
+
+    return sevenDaysAgo.toISOString().split(".")[0] + "Z"
+  }
+
   let userTweets = [];
   let username
   let params = {
