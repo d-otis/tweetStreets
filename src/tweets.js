@@ -68,18 +68,6 @@ const getUserTweets = async (savedIds) => {
     }
   }
 
-  const tweetDateTime = tweet => {
-    return {
-      day: dayjs(tweet.created_at).dayOfYear(),
-      hour: dayjs(tweet.created_at).hour()
-    }
-  }
-
-  const today = {
-    day: dayjs().dayOfYear(),
-    hour: dayjs().hour()
-  }
-
   let matchingTweets = parseTweets(userTweets)
   let tweetQueue = []
   if (matchingTweets.length > 0) {
