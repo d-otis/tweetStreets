@@ -26,14 +26,16 @@ const getUserTweets = async (savedIds) => {
     }
   }
 
+  const { today, lastWeek } = time()
+
   let userTweets = [];
   let username
   let params = {
     "max_results": 100,
     "tweet.fields": "created_at",
     "expansions": "author_id",
-    "start_time": startTime(),
-    "end_time": new Date().toISOString().split('.')[0] + "Z"
+    "start_time": lastWeek,
+    "end_time": today
   }
 
   const options = {
