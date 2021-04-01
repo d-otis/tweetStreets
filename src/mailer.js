@@ -17,7 +17,7 @@ const sendMail = tweets => {
 
   const mailOptions = {
     from: process.env.GMAIL_USR_FROM,
-    to: recipients,
+    bcc: recipients,
     subject: `PhilaStreets Tweets`,
     text: formattedTweets(tweets)
   }
