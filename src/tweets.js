@@ -106,6 +106,10 @@ const getPage = async (params, options, nextToken) => {
     }
     return resp.body;
   } catch (err) {
+    console.log('=============================')
+    console.log('=============================')
+    console.log('=============================')
+    console.log(`Timestamp: ${new Date()}`)
     throw new Error(`Request failed: ${err}`);
   }
 }
