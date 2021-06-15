@@ -16,3 +16,4 @@ I wanted to create a NodeJS app that emails, or texts, me anytime a tweet from P
 - reformat logging to be one line
 - handle not connecting to twitter error better with timestamp
 - modularize test conditions for tweet inclusion
+- save tweets to google sheets instead of .txt
