@@ -21,17 +21,30 @@ const params = {
   "tweet.fields": "created_at"
 }
 
-;(async () => {
+const seedSheet = async () => {
+  const redirectOptions = {
+    follow_max: 5
+  }
   const response = await needle('get', twitterApi, params, options)
   const tweets = response.body.data
-  tweets.forEach(tweet => {
-    tweet.date = tweet.created_at
-    tweet.content = tweet.text
-    delete tweet.created_at
-    delete tweet.text
-  })
   
-  const postResponse = await needle('post', googleSheets, JSON.stringify(tweets) )
+  const postResponse = await needle('post', googleSheets, JSON.stringify(tweets), redirectOptions)
 
-  console.log(postResponse)
-})();
+  console.log(postResponse.body)
+};
+
+const idsFromSheet = async () => {
+
+  const options = {
+    follow_max: 5
+  }
+
+  const { body: response } = await needle('get', googleSheets, options)
+
+  return response.tweets.map(tweet => tweet.id)
+}
+
+module.exports = {
+  idsFromSheet,
+  seedSheet
+}
