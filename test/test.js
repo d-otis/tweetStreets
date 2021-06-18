@@ -1,5 +1,7 @@
 var assert = require('assert')
+var should = require('should')
 var { formatDate, formattedTweets } = require('../src/util')
+var { idsFromSheet } = require('../src/googleSheets')
 
 describe('Array', function() {
   describe("#indexOf()", function () {
@@ -42,5 +44,3 @@ describe('formattedTweets()', function() {
     assert.strictEqual(typeof(formattedTweets(tweets)), 'string')
   })
 })
-
-
