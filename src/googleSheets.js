@@ -1,46 +1,36 @@
 const needle = require('needle')
-const dotenv = require('dotenv');
-const savedIds = require('./savedIds');
+const dotenv = require('dotenv')
 dotenv.config({ path: __dirname + '/../.env' })
 
-const bearerToken = process.env.BEARER_TOKEN;
+const bearerToken = process.env.BEARER_TOKEN
+const googleSheets = process.env.SHEETS
+const twitterApi = "https://api.twitter.com/2/tweets"
 
-const options = {
+const bearerAuthHeaderOptions = {
   headers: {
     "Authorization": `Bearer ${bearerToken}`
   }
 }
 
-const twitterApi = "https://api.twitter.com/2/tweets"
-const googleSheets = process.env.SHEETS
-
-const ids = savedIds
-
-const params = {
-  ids: ids.slice(101).join(','),
-  "tweet.fields": "created_at"
+const redirectOptions = {
+  follow_max: 5
 }
 
 const seedSheet = async () => {
-  const redirectOptions = {
-    follow_max: 5
+  const params = {
+    ids: ids.slice(101).join(','),
+    "tweet.fields": "created_at"
   }
-  const response = await needle('get', twitterApi, params, options)
+
+  const response = await needle('get', twitterApi, params, bearerAuthHeaderOptions)
   const tweets = response.body.data
-  
   const postResponse = await needle('post', googleSheets, JSON.stringify(tweets), redirectOptions)
 
   console.log(postResponse.body)
 };
 
 const idsFromSheet = async () => {
-
-  const options = {
-    follow_max: 5
-  }
-
-  const { body: response } = await needle('get', googleSheets, options)
-
+  const { body: response } = await needle('get', googleSheets, redirectOptions)
   return response.tweets.map(tweet => tweet.id)
 }
 
@@ -49,12 +39,7 @@ const idsFromSheet = async () => {
 * @param {Array} tweets
 */
 const saveTweetsToSheet = async (tweets) => {
-  const redirectOptions = {
-    follow_max: 5
-  }
-
   const response = await needle('post', googleSheets, JSON.stringify(tweets), redirectOptions)
-
   console.log({body: response.body})
 }
 
