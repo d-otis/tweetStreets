@@ -7,7 +7,8 @@ const dayjs = require('dayjs')
 const dayOfYear = require('dayjs/plugin/dayOfYear')
 dayjs.extend(dayOfYear)
 
-const persistTweetIds = require('./fileWrite')
+const persistTweetIds = require('./fileWrite');
+const { saveTweetsToSheet } = require('./googleSheets');
 
 const userId = 117424097;
 const url = `https://api.twitter.com/2/users/${userId}/tweets`;
@@ -77,7 +78,8 @@ const getUserTweets = async (savedIds) => {
     })
 
     if (tweetQueue.length > 0) {
-      persistTweetIds(tweetQueue)
+      // persistTweetIds(tweetQueue)
+      saveTweetsToSheet(tweetQueue)
       sendMail(tweetQueue)
     } else {
       console.log()
