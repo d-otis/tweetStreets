@@ -15,5 +15,8 @@
     "needle": "^2.5.2",
     "nodemailer": "^6.4.17",
     "twilio": "^3.54.1"
+  },
+  "devDependencies": {
+    "jest": "^27.0.4"
   }
 }
