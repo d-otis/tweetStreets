@@ -44,7 +44,22 @@ const idsFromSheet = async () => {
   return response.tweets.map(tweet => tweet.id)
 }
 
+/** 
+* Save Tweets to Google Sheets
+* @param {Array} tweets
+*/
+const saveTweetsToSheet = async (tweets) => {
+  const redirectOptions = {
+    follow_max: 5
+  }
+
+  const response = await needle('post', googleSheets, JSON.stringify(tweets), redirectOptions)
+
+  console.log({body: response.body})
+}
+
 module.exports = {
   idsFromSheet,
-  seedSheet
+  seedSheet,
+  saveTweetsToSheet
 }
