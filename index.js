@@ -1,6 +1,4 @@
 const { getUserTweets } = require('./src/tweets')
-// const savedIds = require('./src/savedIds')
-const { idsFromSheet } = require('./src/googleSheets')
 
 const dateObj = new Date()
 const date = {
@@ -13,4 +11,4 @@ console.log("====================================")
 console.log("===Checking PhilaStreets' Twitter===")
 console.log(`=====${date.date} @ ${date.time}====`)
 console.log("====================================")
-getUserTweets(idsFromSheet)
+getUserTweets()
