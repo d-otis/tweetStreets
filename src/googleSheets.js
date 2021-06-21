@@ -43,8 +43,15 @@ const saveTweetsToSheet = async (tweets) => {
   console.log({body: response.body})
 }
 
+const getEmailsFromSheet = async () => {
+  const { body: response } = await needle('get', googleSheets, redirectOptions)
+
+  return response.emails
+}
+
 module.exports = {
   idsFromSheet,
   seedSheet,
-  saveTweetsToSheet
+  saveTweetsToSheet,
+  getEmailsFromSheet
 }

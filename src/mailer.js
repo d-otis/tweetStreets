@@ -11,13 +11,11 @@ const mail = nodemailer.createTransport({
   }
 })
 
-const sendMail = tweets => {
-
-  const recipients = process.env.GMAIL_USR_TO.split(",")
+const sendMail = (tweets, emails) => {
 
   const mailOptions = {
     from: process.env.GMAIL_USR_FROM,
-    bcc: recipients,
+    bcc: emails,
     subject: `PhilaStreets Tweets`,
     text: formattedTweets(tweets)
   }

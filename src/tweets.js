@@ -7,7 +7,7 @@ const dayjs = require('dayjs')
 const dayOfYear = require('dayjs/plugin/dayOfYear')
 dayjs.extend(dayOfYear)
 
-const { saveTweetsToSheet, idsFromSheet } = require('./googleSheets');
+const { saveTweetsToSheet, idsFromSheet, getEmailsFromSheet } = require('./googleSheets');
 
 const userId = 117424097;
 const url = `https://api.twitter.com/2/users/${userId}/tweets`;
@@ -16,6 +16,7 @@ const bearerToken = process.env.BEARER_TOKEN;
 const getUserTweets = async () => {
 
   const savedIds = await idsFromSheet()
+  const emailRecipients = await getEmailsFromSheet()
 
   const time = () => {
     let today = dayjs()
@@ -81,7 +82,7 @@ const getUserTweets = async () => {
 
     if (tweetQueue.length > 0) {
       saveTweetsToSheet(tweetQueue)
-      sendMail(tweetQueue)
+      sendMail(tweetQueue, emailRecipients)
     } else {
       console.log()
       console.log('no new relevant tweets')
