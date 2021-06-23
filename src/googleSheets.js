@@ -30,8 +30,12 @@ const seedSheet = async () => {
 };
 
 const idsFromSheet = async () => {
-  const { body: response } = await needle('get', googleSheets, redirectOptions)
-  return response.tweets.map(tweet => tweet.id)
+  try {
+    const { body: response } = await needle('get', googleSheets, redirectOptions)
+    return response.tweets.map(tweet => tweet.id)
+  } catch (error) {
+    console.error(`idsFromSheet Error: ${err}`)
+  }
 }
 
 /** 
@@ -39,14 +43,22 @@ const idsFromSheet = async () => {
 * @param {Array} tweets
 */
 const saveTweetsToSheet = async (tweets) => {
-  const response = await needle('post', googleSheets, JSON.stringify(tweets), redirectOptions)
-  console.log({body: response.body})
+  try {
+    const response = await needle('post', googleSheets, JSON.stringify(tweets), redirectOptions)
+    console.log({body: response.body})
+  } catch (error) {
+    console.error(`saveTweetsToSheet Error: ${error}`)
+  }
+
 }
 
 const getEmailsFromSheet = async () => {
-  const { body: response } = await needle('get', googleSheets, redirectOptions)
-
-  return response.emails
+  try {
+    const { body: response } = await needle('get', googleSheets, redirectOptions)
+    return response.emails
+  } catch (error) {
+    console.error(`getEmailsFromSheet Error: ${error}}`)
+  }
 }
 
 module.exports = {
