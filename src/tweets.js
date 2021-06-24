@@ -111,9 +111,11 @@ const getPage = async (params, options, nextToken) => {
     return resp.body;
   } catch (err) {
     console.log('=============================')
+    console.log('=============error================')
     console.log('=============================')
-    console.log('=============================')
-    throw new Error(`Request failed @${new Date()} ==> ${err}`);
+    console.error(`getPage() Request failed @${new Date()} ==> ${err}`);
+    console.error('trying again...')
+    await getPage(params, options, nextToken)
   }
 }
 
