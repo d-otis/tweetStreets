@@ -114,8 +114,6 @@ const getPage = async (params, options, nextToken) => {
     console.log('=============error================')
     console.log('=============================')
     console.error(`getPage() Request failed @${new Date()} ==> ${err}`);
-    console.error('trying again...')
-    await getPage(params, options, nextToken)
   }
 }
 
