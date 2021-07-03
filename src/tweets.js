@@ -15,79 +15,83 @@ const bearerToken = process.env.BEARER_TOKEN;
 
 const getUserTweets = async () => {
 
-  const savedIds = await idsFromSheet()
-  const emailRecipients = await getEmailsFromSheet()
+  try {
+    const savedIds = await idsFromSheet()
+    const emailRecipients = await getEmailsFromSheet()
 
-  const time = () => {
-    let today = dayjs()
-    let sevenDaysAgo = today.subtract(7, 'day')
-    const formatTime = raw => raw.toISOString().split(".")[0] + "Z"
+    const time = () => {
+      let today = dayjs()
+      let sevenDaysAgo = today.subtract(7, 'day')
+      const formatTime = raw => raw.toISOString().split(".")[0] + "Z"
 
-    return {
-      today: formatTime(today),
-      lastWeek: formatTime(sevenDaysAgo)
-    }
-  }
-
-  const { today, lastWeek } = time()
-
-  let userTweets = [];
-  let username
-  let params = {
-    "max_results": 100,
-    "tweet.fields": "created_at",
-    "expansions": "author_id",
-    "start_time": lastWeek,
-    "end_time": today
-  }
-
-  const options = {
-    headers: {
-      "authorization": `Bearer ${bearerToken}`
-    }
-  }
-
-  let hasNextPage = true;
-  let nextToken = null;
-
-  console.log()
-  console.log("Retrieving Tweets...");
-  console.log()
-
-  while (hasNextPage) {
-    let resp = await getPage(params, options, nextToken);
-    if (resp && resp.meta && resp.meta.result_count && resp.meta.result_count > 0) {
-      if (resp.data) {
-        userTweets.push.apply(userTweets, resp.data);
+      return {
+        today: formatTime(today),
+        lastWeek: formatTime(sevenDaysAgo)
       }
-      username = resp.includes.users[0].username
-      if (resp.meta.next_token) {
-        nextToken = resp.meta.next_token;
+    }
+
+    const { today, lastWeek } = time()
+
+    let userTweets = [];
+    let username
+    let params = {
+      "max_results": 100,
+      "tweet.fields": "created_at",
+      "expansions": "author_id",
+      "start_time": lastWeek,
+      "end_time": today
+    }
+
+    const options = {
+      headers: {
+        "authorization": `Bearer ${bearerToken}`
+      }
+    }
+
+    let hasNextPage = true;
+    let nextToken = null;
+
+    console.log()
+    console.log("Retrieving Tweets...");
+    console.log()
+
+    while (hasNextPage) {
+      let resp = await getPage(params, options, nextToken);
+      if (resp && resp.meta && resp.meta.result_count && resp.meta.result_count > 0) {
+        if (resp.data) {
+          userTweets.push.apply(userTweets, resp.data);
+        }
+        username = resp.includes.users[0].username
+        if (resp.meta.next_token) {
+          nextToken = resp.meta.next_token;
+        } else {
+          hasNextPage = false
+        }
       } else {
-        hasNextPage = false
+        hasNextPage = false;
       }
-    } else {
-      hasNextPage = false;
     }
-  }
 
-  let matchingTweets = parseTweets(userTweets)
-  let tweetQueue = []
-  if (matchingTweets.length > 0) {
-    matchingTweets.forEach(tweet => {
+    let matchingTweets = parseTweets(userTweets)
+    let tweetQueue = []
+    if (matchingTweets.length > 0) {
+      matchingTweets.forEach(tweet => {
 
-      if (!savedIds.includes(tweet.id))
-        tweetQueue.push(tweet)
-    })
+        if (savedIds && !savedIds.includes(tweet.id))
+          tweetQueue.push(tweet)
+      })
 
-    if (tweetQueue.length > 0) {
-      saveTweetsToSheet(tweetQueue)
-      sendMail(tweetQueue, emailRecipients)
-    } else {
-      console.log()
-      console.log('no new relevant tweets')
-      console.log()
+      if (tweetQueue.length > 0) {
+        saveTweetsToSheet(tweetQueue)
+        sendMail(tweetQueue, emailRecipients)
+      } else {
+        console.log()
+        console.log('no new relevant tweets')
+        console.log()
+      }
     }
+  } catch (error) {
+    console.error(`Error @ ${new Date()} => ${error}`)
   }
 }
 
