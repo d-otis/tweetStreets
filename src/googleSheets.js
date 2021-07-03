@@ -45,7 +45,7 @@ const idsFromSheet = async () => {
 const saveTweetsToSheet = async (tweets) => {
   try {
     const response = await needle('post', googleSheets, JSON.stringify(tweets), redirectOptions)
-    console.log({body: response.body})
+    console.log({body: response.body.body})
   } catch (error) {
     console.error(`saveTweetsToSheet() Error: ${error}`)
   }
