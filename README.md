@@ -9,11 +9,6 @@ This led to a lot of delays here in Philadelphia that were unpredictable and oft
 I wanted to create a NodeJS app that emails, or texts, me anytime a tweet from PhilaStreets included the terms: suspend, collection, resume, delay.
 
 ## Todo
-
-- automatically generate a blank ```db/ids.txt``` when it doesn't already exist.
 - clean up TwilioSMS branch + merge with main
-- fiddle with dynamic date so it doesn't go back so far in time (make sure format produced by dayjs doesn't conflict with expected format in Twitter API)
-- reformat logging to be one line
 - handle not connecting to twitter error better with timestamp
 - modularize test conditions for tweet inclusion
-- save tweets to google sheets instead of .txt
