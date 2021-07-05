@@ -121,12 +121,13 @@ const getPage = async (params, options, nextToken) => {
   }
 }
 
-const testForKeywords = tweet => {
-  return tweet.text.includes('resume') || tweet.text.includes('suspended') || tweet.text.includes('delay') || tweet.text.includes('collection')
-}
-
 const parseTweets = tweetArray => {
+  
   let parsedTweets = []
+  const testForKeywords = tweet => {
+    return tweet.text.includes('resume') || tweet.text.includes('suspended') || tweet.text.includes('delay') || tweet.text.includes('collection')
+  }
+
   tweetArray.filter(tweet => {
     if (testForKeywords(tweet)) {
       parsedTweets.push(tweet)
