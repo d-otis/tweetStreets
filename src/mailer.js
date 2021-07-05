@@ -27,4 +27,26 @@ const sendMail = (tweets, emails) => {
   })
 }
 
-module.exports = sendMail
+const sendErrorEmail = msg => {
+  const mailOptions = {
+    from: process.env.GMAIL_USR_FROM,
+    to: process.env.FOLEY,
+    subject: `Tweet Streets Error -> ${new Date().toISOString()}`,
+    text: msg
+  }
+
+  mail.sendMail(mailOptions, (err, info) => {
+    console.log(`${new Date()} => sending error email`)
+    if (err) {
+      console.error(`error sending error email`)
+      console.error(`${new Date().toISOString()} => ${err}`)
+    }
+    console.log('error email sent with the following response')
+    console.log(info)
+  })
+}
+
+module.exports = { 
+  sendMail, 
+  sendErrorEmail
+}
