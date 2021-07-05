@@ -20,11 +20,7 @@ const sendMail = (tweets, emails) => {
     text: formattedTweets(tweets)
   }
 
-  mail.sendMail(mailOptions, (err, info) => {
-    console.log(`Sending email with ${tweets.length} tweets.`)
-    console.log(err ? err : `Email sent: ${info.response}`)
-    console.log("====================================")
-  })
+  return mail.sendMail(mailOptions)
 }
 
 const sendErrorEmail = msg => {
