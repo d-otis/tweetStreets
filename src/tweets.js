@@ -33,7 +33,6 @@ const getUserTweets = async () => {
     const { today, lastWeek } = time()
 
     let userTweets = [];
-    let username
     let params = {
       "max_results": 100,
       "tweet.fields": "created_at",
@@ -54,6 +53,8 @@ const getUserTweets = async () => {
     console.log()
     console.log("Retrieving Tweets...");
     console.log()
+
+    let username
 
     while (hasNextPage) {
       let resp = await getPage(params, options, nextToken);
