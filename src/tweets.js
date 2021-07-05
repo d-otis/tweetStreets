@@ -1,5 +1,5 @@
 const needle = require('needle');
-const sendMail = require('./mailer')
+const { sendMail } = require('./mailer')
 const dotenv = require('dotenv')
 dotenv.config({ path: __dirname + '/../.env' })
 
