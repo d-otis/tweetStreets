@@ -1,5 +1,5 @@
 const needle = require('needle');
-const { sendMail } = require('./mailer')
+const { sendMail, sendErrorEmail } = require('./mailer')
 const dotenv = require('dotenv')
 dotenv.config({ path: __dirname + '/../.env' })
 
@@ -92,7 +92,8 @@ const getUserTweets = async () => {
       }
     }
   } catch (error) {
-    console.error(`Error @ ${new Date()} => ${error}`)
+    console.error(`Error @ ${new Date().toISOString()} => ${error}`)
+    sendErrorEmail(error)
   }
 }
 
@@ -118,7 +119,8 @@ const getPage = async (params, options, nextToken) => {
     console.log('=============================')
     console.log('=============error================')
     console.log('=============================')
-    console.error(`getPage() Request failed @${new Date()} ==> ${err}`);
+    console.error(`getPage() Request failed @${new Date().toISOString()} ==> ${err}`);
+    sendErrorEmail(err)
   }
 }
 
