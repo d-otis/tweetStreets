@@ -1,13 +1,11 @@
 const needle = require('needle');
 const { sendMail, sendErrorEmail } = require('./mailer')
 const dotenv = require('dotenv')
-dotenv.config({ path: __dirname + '/../.env' })
-
 const dayjs = require('dayjs')
 const dayOfYear = require('dayjs/plugin/dayOfYear')
-dayjs.extend(dayOfYear)
-
 const { saveTweetsToSheet, idsFromSheet, getEmailsFromSheet } = require('./googleSheets');
+dotenv.config({ path: __dirname + '/../.env' })
+dayjs.extend(dayOfYear)
 
 const userId = 117424097;
 const url = `https://api.twitter.com/2/users/${userId}/tweets`;
