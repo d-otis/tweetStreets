@@ -83,8 +83,10 @@ const getUserTweets = async () => {
       })
 
       if (tweetQueue.length > 0) {
-        saveTweetsToSheet(tweetQueue)
-        sendMail(tweetQueue, emailRecipients)
+        const { response } = await sendMail(tweetQueue, emailRecipients)
+        if (response.split(' ')[0] == 250) {
+          saveTweetsToSheet(tweetQueue)
+        }
       } else {
         console.log()
         console.log('no new relevant tweets')
