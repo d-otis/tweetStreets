@@ -32,7 +32,7 @@ const sendErrorEmail = msg => {
   }
 
   mail.sendMail(mailOptions, (err, info) => {
-    console.log(`${new Date()} => sending error email`)
+    console.log(`${new Date().toISOString()} => sending error email`)
     if (err) {
       console.error(`error sending error email`)
       console.error(`${new Date().toISOString()} => ${err}`)
