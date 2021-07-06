@@ -12,3 +12,4 @@ I wanted to create a NodeJS app that emails, or texts, me anytime a tweet from P
 - clean up TwilioSMS branch + merge with main
 - handle not connecting to twitter error better with timestamp
 - modularize test conditions for tweet inclusion
+- print one-liner status messages to the log
