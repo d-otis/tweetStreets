@@ -48,9 +48,7 @@ const getUserTweets = async () => {
     let hasNextPage = true;
     let nextToken = null;
 
-    console.log()
-    console.log("Retrieving Tweets...");
-    console.log()
+    console.log(`${new Date()} - Retrieving Tweets`)
 
     let username
 
@@ -84,11 +82,10 @@ const getUserTweets = async () => {
         const { response } = await sendMail(tweetQueue, emailRecipients)
         if (response.split(' ')[0] == 250) {
           saveTweetsToSheet(tweetQueue)
+          console.log(`${new Date()} - ${response}`)
         }
       } else {
-        console.log()
-        console.log('no new relevant tweets')
-        console.log()
+        console.log(`${new Date()} - No New Relevant Tweets`)
       }
     }
   } catch (error) {

@@ -5,10 +5,7 @@ const date = {
   date: dateObj.toLocaleString().split(", ")[0],
   time: dateObj.toLocaleString().split(", ")[1],
 }
+
 console.log()
-console.log()
-console.log("====================================")
-console.log("===Checking PhilaStreets' Twitter===")
-console.log(`=====${date.date} @ ${date.time}====`)
-console.log("====================================")
+console.log(`${new Date()} - Started`)
 getUserTweets()
