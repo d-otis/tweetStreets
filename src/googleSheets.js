@@ -1,5 +1,6 @@
 const needle = require('needle')
 const dotenv = require('dotenv')
+const { sendErrorEmail } = require('./mailer')
 dotenv.config({ path: __dirname + '/../.env' })
 
 const bearerToken = process.env.BEARER_TOKEN
@@ -34,7 +35,8 @@ const idsFromSheet = async () => {
     const { body: response } = await needle('get', googleSheets, redirectOptions)
     return response.tweets.map(tweet => tweet.id)
   } catch (error) {
-    console.error(`idsFromSheet() Error: ${error}`)
+    console.error(`idsFromSheet() ${error}`)
+    sendErrorEmail(error)
   }
 }
 
@@ -47,7 +49,8 @@ const saveTweetsToSheet = async (tweets) => {
     const response = await needle('post', googleSheets, JSON.stringify(tweets), redirectOptions)
     console.log({body: response.body.body})
   } catch (error) {
-    console.error(`saveTweetsToSheet() Error: ${error}`)
+    console.error(`saveTweetsToSheet() ${error}`)
+    sendErrorEmail(error)
   }
 
 }
@@ -57,7 +60,8 @@ const getEmailsFromSheet = async () => {
     const { body: response } = await needle('get', googleSheets, redirectOptions)
     return response.emails
   } catch (error) {
-    console.error(`getEmailsFromSheet() Error: ${error}}`)
+    console.error(`getEmailsFromSheet() ${error}}`)
+    sendErrorEmail(error)
   }
 }
 
