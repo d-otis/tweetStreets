@@ -37,9 +37,9 @@ const sendErrorEmail = msg => {
       console.error(`error sending error email, lol`)
       console.error(`try/catch error-msg was => ${msg}`)
       console.error(`${new Date().toISOString()} => ${err}`)
+    } else {
+      console.log('error email sent', { msg, info })
     }
-    console.log('error email sent with the following response')
-    console.log(info)
   })
 }
 
