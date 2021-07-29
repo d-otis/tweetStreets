@@ -13,3 +13,6 @@ I wanted to create a NodeJS app that emails, or texts, me anytime a tweet from P
 - handle not connecting to twitter error better with timestamp
 - modularize test conditions for tweet inclusion
 - print one-liner status messages to the log
+- make it live so you can sign up for the service? (needs diagrams, API endpoints, etc)
+- only grab emails in the event of tweets
+  
