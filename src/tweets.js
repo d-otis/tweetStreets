@@ -53,6 +53,7 @@ const getUserTweets = async () => {
 
     while (hasNextPage) {
       let resp = await getPage(params, options, nextToken);
+    
       if (resp && resp.meta && resp.meta.result_count && resp.meta.result_count > 0) {
         if (resp.data) {
           userTweets.push.apply(userTweets, resp.data);
@@ -87,6 +88,8 @@ const getUserTweets = async () => {
       } else {
         console.log(`${new Date()} - No New Relevant Tweets`)
       }
+    } else {
+      console.log(`${new Date()} - No New Relevant Tweets`)
     }
   } catch (error) {
     console.error(`Error @ ${new Date().toISOString()} => ${error}`)
