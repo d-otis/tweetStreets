@@ -15,7 +15,6 @@ const getUserTweets = async () => {
 
   try {
     const savedIds = await idsFromSheet()
-    const emailRecipients = await getEmailsFromSheet()
 
     const time = () => {
       let today = dayjs()
@@ -79,6 +78,7 @@ const getUserTweets = async () => {
       })
 
       if (tweetQueue.length > 0) {
+        const emailRecipients = await getEmailsFromSheet()
         const { response } = await sendMail(tweetQueue, emailRecipients)
         if (response.split(' ')[0] == 250) {
           saveTweetsToSheet(tweetQueue)
