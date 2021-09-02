@@ -83,7 +83,7 @@ const getUserTweets = async () => {
         const { response } = await sendMail(tweetQueue, emailRecipients)
         if (response.split(' ')[0] == 250) {
           saveTweetsToSheet(tweetQueue)
-          console.log(`${new Date()} - ${response}`)
+          console.log(`${new Date()} - Emails Sent - ${response}`)
         }
       } else {
         console.log(`${new Date()} - No New Relevant Tweets`)
