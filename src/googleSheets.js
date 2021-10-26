@@ -65,9 +65,30 @@ const getEmailsFromSheet = async () => {
   }
 }
 
+const addEmail = async args => {
+  if (args.length < 3) { 
+    console.error('please supply at least one email address')
+    return
+   }
+
+  const emails = args[2].split(",");
+
+  try {
+    const response = await needle('post', googleSheets, JSON.stringify({ emails }), redirectOptions);
+    console.log("=========================")
+    console.log(`${emails.length} EMAIL ADDRESS${emails.length > 1 ? 'ES' : ""} ADDED`)
+    console.log(`complete: ${response.complete} \naborted: ${response.aborted} \nemailsAdded: ${emails.join(", ")}`)
+    console.log("=========================")
+    console.log()
+  } catch (error) {
+    console.error(`error: ${error}`)
+  }
+}
+
 module.exports = {
   idsFromSheet,
   seedSheet,
   saveTweetsToSheet,
-  getEmailsFromSheet
+  getEmailsFromSheet,
+  addEmail
 }
