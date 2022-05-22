@@ -1,5 +1,5 @@
 {
-  "name": "y",
+  "name": "tweetStreets",
   "version": "1.0.0",
   "description": "App to send notifications when Philly Streets Collection is delayed or resumed.",
   "main": "index.js",
