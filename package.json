@@ -16,6 +16,7 @@
     "twilio": "^3.54.1"
   },
   "devDependencies": {
+    "jest": "^28.1.0",
     "should": "^13.2.3"
   }
 }
