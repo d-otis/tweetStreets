@@ -150,4 +150,6 @@ const parseTweets = (tweetArray) => {
   return parsedTweets;
 };
 
-exports.getUserTweets = getUserTweets;
+module.exports = {
+  getUserTweets,
+};
