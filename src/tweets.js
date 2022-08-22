@@ -138,7 +138,8 @@ const parseTweets = (tweetArray) => {
       tweet.text.includes("resume") ||
       tweet.text.includes("suspended") ||
       tweet.text.includes("delay") ||
-      tweet.text.includes("collection")
+      (tweet.text.includes("collection") &&
+        !tweet.text.includes("TriviaTuesday"))
     );
   };
 
