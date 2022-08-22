@@ -135,11 +135,11 @@ const parseTweets = (tweetArray) => {
   let parsedTweets = [];
   const testForKeywords = (tweet) => {
     return (
-      tweet.text.includes("resume") ||
-      tweet.text.includes("suspended") ||
-      tweet.text.includes("delay") ||
-      (tweet.text.includes("collection") &&
-        !tweet.text.includes("TriviaTuesday"))
+      (tweet.text.includes("resume") ||
+        tweet.text.includes("suspended") ||
+        tweet.text.includes("delay") ||
+        tweet.text.includes("collection")) &&
+      !tweet.text.includes("TriviaTuesday")
     );
   };
 

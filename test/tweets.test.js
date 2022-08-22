@@ -7,6 +7,9 @@ const NEG_TWEETS = [
   {
     text: "This tweet will not send an email.",
   },
+  {
+    text: "This is a TriviaTuesday post with the word collection",
+  },
 ];
 
 const POSITIVE_TWEETS = [
