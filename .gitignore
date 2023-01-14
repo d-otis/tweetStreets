@@ -6,6 +6,6 @@ notes.md
 /src/data.txt
 message.txt
 std*
-com.tweetStreets.everyHour.plist
+# com.tweetStreets.everyHour.plist
 pi.log
 *.log
